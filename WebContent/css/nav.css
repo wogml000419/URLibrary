@@ -1,0 +1,31 @@
+.bg-darkslateblue {
+  background-color: darkslateblue;
+}
+
+#navbar {
+  justify-content: space-between;
+}
+
+.search-area {
+  width: 100%;
+}
+
+@media(min-width: 768px)
+{
+.search-area {
+  width: calc(100% - 290px);
+}
+}
+
+.search-area form input {
+  width: 100% !important;
+  max-width: 730px;
+}
+
+.link-area {
+  display: table;
+}
+
+.dropdown-menu {
+  margin-left: -70px;
+}

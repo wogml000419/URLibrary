@@ -1,0 +1,101 @@
+body {
+  background-color: darkslateblue;
+}
+
+.blog-main {
+  margin-left: 120px;
+  margin-bottom: 60px;
+}
+
+.userinfo-main {
+  margin-left: 180px;
+  margin-bottom: 60px;  
+}
+
+.row {
+  justify-content: center;
+}
+
+.content-area {
+  margin-top: 15px;
+}
+
+.post {
+  border-radius: 12px;
+  margin-bottom: 15px;
+  padding: 20px;
+  background-color: mintcream;
+}
+
+.post-title {
+  display: inline-block;
+  overflow: hidden;
+  white-space: nowrap; 
+  text-overflow: ellipsis;
+  width: 65%;
+}
+
+.post-simple-url {
+  display: inline-block;
+  text-align: right;
+  position: absolute;
+  right: 35px;
+  width: 35%;
+}
+
+.post-simple-url a {
+  color: lightgray;
+}
+
+.url-text-area {
+  background-color: lavender;
+  padding: 5px;
+}
+
+.tumbnail {
+  min-width: 20%;
+  max-width: 30%;
+  width: auto;
+  height: auto;
+  float: left;
+  margin-right: 5px;
+}
+
+.clear-float {
+  clear: both;
+}
+
+.timeline-sidebar {
+  color: white;
+}
+
+.tags {
+  color: gray;
+  font-size: 10px;
+}
+
+.profile-area {
+  position: absolute;
+  left: -120px;
+  text-align: center;
+  color: white;
+}
+
+.profile-area img {
+  width: 120px;
+  height: 120px;
+  border-radius: 5px;
+}
+
+.userinfo-area {
+  position: absolute;
+  left: -180px;
+  text-align: center;
+  color: white;
+}
+
+.userinfo-area img {
+  width: 180px;
+  height: 180px;
+  border-radius: 5px;
+}

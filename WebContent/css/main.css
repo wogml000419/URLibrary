@@ -1,0 +1,47 @@
+html {
+  height: 100%;
+}
+
+body {
+  height: 100%;
+  background-image: url('/image/library.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+form {
+  width: 376.5px;
+  display: inline-block;
+  overflow: auto;
+}
+
+.main-container {
+  width: 100%;
+  height: 100%;
+  margin: 0px;
+  padding: 0px;
+  max-width: none;
+}
+
+.center {
+  text-align: center;
+  padding: 0px;
+}
+
+#transparent-bg {
+  width: 100%;
+  background-color: rgba(245, 255, 250, 0.75);
+  padding: 15px;
+  transition: height 0.5s;
+}
+
+.main-title {
+  color: darkslateblue;
+  font-size: 80px;
+}
+
+.sub-title {
+  color: rgb(0, 0, 75);
+}
+
