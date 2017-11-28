@@ -89,6 +89,7 @@
     </c:if>
     <c:if test="${!empty carousel}">
       <script>$(document).ready(function() { $('#main-carousel').carousel(${carousel}) })</script>
+      <% session.removeAttribute("carousel"); %>
     </c:if>
   </body>
 </html>

@@ -11,11 +11,38 @@
   	<link rel="stylesheet" href="${contextPath}/css/timeline.css" type="text/css">
   </head>
   <body>
-		
+	<script id="post-template" type="text/template">
+      <div class="post">
+        <div class="profile-area">
+          <img data-src="profile_src">
+          <p data-content="nickname"></p>
+        </div>
+        <div class="title-area">
+          <h3 class="post-title" data-content="title"></h3>
+          <h3 class="post-simple-url"><a data-href="url" data-content-append="surl">@</a></h3>
+          <p class="post-url">URL <a data-href="url" data-content="url"></a></p>
+        </div>            
+	    <hr>
+        <div class="url-text-area">
+		  <img class="tumbnail" data-src="url_thumbnail">
+          <p data-content="url_text"></p>
+          <div class="clear-float"></div>
+        </div>
+        <hr>
+        <div class="user-text-area">
+          <p data-content="user_text"></p>
+        </div>
+        <div class="tag-area">
+          <p class="tags" data-content="tags"></p>
+        </div>
+      </div>
+    </script>
+	
     <%@ include file="nav.jsp" %>
     <main role="main" class="container content-area">
       <div class="row">
         <div class="col-sm-8 blog-main">
+          <div id="posts">
           <div class="post">
             <div class="profile-area">
               <img src="${contextPath}/image/tmpprofile2.jpg">
@@ -111,16 +138,16 @@ Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis moll
               <p class="tags">#집가고싶어 #asdf #워쓰한궈런 #인디_게임_위크엔드 #후성아_고생이_많다 #더_써야_하는데 #프론트엔드_너무_어려워 #태그_하나_더 #대기대기김대기</p>
             </div>
           </div>
-          
-          <nav class="blog-pagination">
-            <a class="btn btn-outline-primary" href="#">Older</a>
-            <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-          </nav>
+          </div>
+          <button class="btn btn-primary" onclick="load_more_post()">Load more</button>
         </div>
+        
       </div>
     </main>
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
+  	<script src="${contextPath}/js/plugins/jquery.loadTemplate.js"></script>
+  	<script src="${contextPath}/js/getposts.js"></script>
   </body>
 </html>

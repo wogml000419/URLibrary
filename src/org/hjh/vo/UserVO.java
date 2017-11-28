@@ -3,6 +3,8 @@
  */
 package org.hjh.vo;
 
+import com.google.gson.JsonObject;
+
 /**
  * <pre>
  * org.hjh.vo
@@ -15,13 +17,8 @@ package org.hjh.vo;
  * @author : user
  * @version : 1.0
  */
-public class UserVO {
-
-	@Override
-	public String toString() {
-		return "UserVO [id=" + id + ", pwd=" + pwd + ", nickname=" + nickname + "]";
-	}
-
+public class UserVO 
+{
 	private String id;
 	private String pwd;
 	private String nickname;
@@ -57,4 +54,21 @@ public class UserVO {
 	public void setPwd(String pwd) {
 		this.pwd = pwd;
 	}
+	
+	@Override
+	public String toString() 
+	{
+		return "UserVO [id=" + id + ", pwd=" + pwd + ", nickname=" + nickname + "]";
+	}
+
+	public JsonObject toJson()
+	{
+		JsonObject json = new JsonObject();
+		
+		json.addProperty("id", id);
+		json.addProperty("nickname", nickname);
+		
+		return json;
+	}
+	
 }

@@ -74,4 +74,20 @@ public class UserService extends AbstractService {
 			if(conn != null) conn.close();
 		}
 	}
+	
+	public static UserVO searchUser(String id) throws Exception
+	{
+		Connection conn = null;
+		try
+		{
+			conn = getConnection();
+			UserDao dao = new UserDao(conn);
+			
+			return dao.searchUserById(id);
+		}
+		finally
+		{
+			if(conn != null) conn.close();
+		}	
+	}
 }
