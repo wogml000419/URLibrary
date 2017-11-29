@@ -53,10 +53,12 @@ body {
 }
 
 .tumbnail {
-  min-width: 20%;
-  max-width: 30%;
+/*  min-width: 20%;
+  max-width: 30%; */
   width: auto;
   height: auto;
+  max-height: 150px;
+  overflow: hidden;
   float: left;
   margin-right: 5px;
 }

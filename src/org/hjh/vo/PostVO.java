@@ -3,8 +3,6 @@
  */
 package org.hjh.vo;
 
-import java.util.Arrays;
-
 import com.google.gson.JsonObject;
 
 /**
@@ -25,24 +23,21 @@ public class PostVO {
 	private String userEmail;
 	private String url;
 	private String surl;
-	private String urlThumbnail;
-	private String urlText;
 	private String title;
 	private String userText;
-	private String[] tags;
+	private int shareWith;
+	private String tags;
 
 	public PostVO() {}
-	public PostVO(int postID, String userEmail, String url, String surl, String urlThumbnail, 
-			String urlText, String title, String userText, String[] tags) 
+	public PostVO(int postID, String userEmail, String url, String surl, String title, String userText, int shareWith, String tags) 
 	{
 		this.postID = postID;
 		this.userEmail = userEmail;
 		this.title = title;
 		this.url = url;
 		this.surl = surl;
-		this.urlThumbnail = urlThumbnail; //postID를 사용해 서버에 저장
-		this.urlText = urlText;
 		this.userText = userText;
+		this.shareWith = shareWith;
 		this.tags = tags;
 	}
 
@@ -78,22 +73,6 @@ public class PostVO {
 		this.surl = surl;
 	}
 
-	public String getUrlThumbnail() {
-		return urlThumbnail;
-	}
-
-	public void setUrlThumbnail(String urlThumbnail) {
-		this.urlThumbnail = urlThumbnail;
-	}
-
-	public String getUrlText() {
-		return urlText;
-	}
-
-	public void setUrlText(String urlText) {
-		this.urlText = urlText;
-	}
-
 	public String getTitle() {
 		return title;
 	}
@@ -109,12 +88,20 @@ public class PostVO {
 	public void setUserText(String userText) {
 		this.userText = userText;
 	}
+	
+	public int getShareWith() {
+		return shareWith;
+	}
 
-	public String[] getTags() {
+	public void setShareWith(int shareWith) {
+		this.shareWith = shareWith;
+	}
+	
+	public String getTags() {
 		return tags;
 	}
 
-	public void setTags(String[] tags) {
+	public void setTags(String tags) {
 		this.tags = tags;
 	}
 	
@@ -122,8 +109,8 @@ public class PostVO {
 	public String toString() 
 	{
 		return "PostVO [postID=" + postID + ", userEmail=" + userEmail + ", url=" + url + ", surl=" + surl
-				+ ", urlTumbnail=" + urlThumbnail + ", urlText=" + urlText + ", title=" + title + ", userText="
-				+ userText + ", tags=" + Arrays.toString(tags) + "]";
+				+ ", title=" + title + ", userText="
+				+ userText + ", tags=" + tags + "]";
 	}
 	
 	public JsonObject toJson()
@@ -134,11 +121,9 @@ public class PostVO {
 		result.addProperty("userEmail", userEmail);
 		result.addProperty("url", url);
 		result.addProperty("surl", surl);
-		result.addProperty("urlThumbnail", urlThumbnail);
-		result.addProperty("urlText", urlText);
 		result.addProperty("title", title);
 		result.addProperty("userText", userText);
-		result.addProperty("tags", Arrays.toString(tags));
+		result.addProperty("tags", tags);
 		
 		return result;
 	}

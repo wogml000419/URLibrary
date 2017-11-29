@@ -45,7 +45,7 @@ public class LoadPostAction implements IAction
 			System.out.println(userToSearch);
 			System.out.println(searchJson);		
 			
-			PostVO post = PostService.getPost(1);
+			PostVO post = PostService.getPost(3);
 			UserVO user = UserService.searchUser(post.getUserEmail());
 			response.setContentType("application/json;charset=utf-8");
 			if(post != null)
@@ -55,10 +55,6 @@ public class LoadPostAction implements IAction
 				obj.add("post", post.toJson());
 				obj.add("user", user.toJson());
 				out.write(obj.toString());
-			}
-			else
-			{
-				throw new Exception("존재하지 않는 글입니다.");
 			}
 		}
 		catch(Exception e)
