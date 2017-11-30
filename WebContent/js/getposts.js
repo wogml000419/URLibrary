@@ -19,7 +19,7 @@ function load_more_post(search, isTimeline, userToSearch, showError) {
 				    $('#posts').loadTemplate($('#post-template'),
 					    {
 				    	profile_href: 'timeline.do?userToSearch=' + data.user.id + '&showerror=false',
-					    profile_src: '/image/profiles/' + data.user.id + ".jpg",
+					    profile_src: '/image/profiles/' + data.user.id.replace('@', '') + ".jpg",
 					    nickname: data.user.nickname,
 						title: data.post.title,
 						url: data.post.url,

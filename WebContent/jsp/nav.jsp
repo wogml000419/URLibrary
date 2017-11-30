@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" href="${contextPath}/css/nav.css" type="text/css">
     <nav class="navbar navbar-expand-md navbar-dark bg-darkslateblue">
-      <a class="navbar-brand" href="${contextPath}/jsp/timeline.jsp">U</a>
+      <a class="navbar-brand" href="${contextPath}/timeline.do?isTimeline=true&showerror=false">U</a>
       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -29,8 +29,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${user.nickname}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="/timeline.do?userToSearch=${user.id}&showerror=false">My URLs</a>
-                  <a class="dropdown-item" href="#">My Follows</a>
+                  <a class="dropdown-item" href="${contextPath}/timeline.do?userToSearch=${user.id}&showerror=false">My URLs</a>
+                  <a class="dropdown-item" href="${contextPath}/userinfo.do">My Follows</a>
                   <a class="dropdown-item" href="${contextPath}/logout.do">Logout</a>
                 </div>
               </li>

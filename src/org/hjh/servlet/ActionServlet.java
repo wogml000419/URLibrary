@@ -33,6 +33,7 @@ public class ActionServlet extends HttpServlet {
     	actions.put("loadpost", new LoadPostAction());
     	actions.put("post", new PostAction());
     	actions.put("timeline", new TimelineAction());
+    	actions.put("userinfo", new UserInfoAction());
     }
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException 

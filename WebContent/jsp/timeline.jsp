@@ -47,7 +47,7 @@
           <div id="posts">
           
           </div>
-          <button class="btn btn-primary" onclick="load_more_post('${search}', ${isTimeline}, '${userToSearch}', true)">Load more</button>
+          <button class="btn btn-primary" onclick="load_more_post('${search}', '${isTimeline}', '${userToSearch}', true)">Load more</button>
         </div>
         
       </div>
@@ -56,6 +56,6 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/js/bootstrap.min.js" integrity="sha384-alpBpkh1PFOepccYVYDB4do5UnbKysX5WZXm3XxPqe5iKTfUKjNkCk9SaVuEZflJ" crossorigin="anonymous"></script>
   	<script src="${contextPath}/js/plugins/jquery.loadTemplate.js"></script>
   	<script src="${contextPath}/js/getposts.js"></script>
-  	<script>$(document).ready(function() { load_more_post('${search}', ${isTimeline}, '${userToSearch}', '${showerror}') })</script>
+  	<script>$(document).ready(function() { load_more_post('${search}', '${isTimeline}', '${userToSearch}', '${showerror}') })</script>
   </body>
 </html>

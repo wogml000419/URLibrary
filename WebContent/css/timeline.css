@@ -101,3 +101,31 @@ body {
   height: 180px;
   border-radius: 5px;
 }
+
+.white {
+  color: white;
+}
+
+.user {
+  border-radius: 12px;
+  margin-bottom: 7px;
+  margin-left: 5px;
+  padding: 10px;
+  background-color: mintcream;
+}
+
+.small-profile {
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+}
+
+.username {
+  margin-bottom: 0px;
+  padding-top: 7px;
+}
+
+#unfollow {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}

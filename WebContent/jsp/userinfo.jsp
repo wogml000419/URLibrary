@@ -16,100 +16,21 @@
       <div class="row">
         <div class="col-sm-8 userinfo-main">
           <div class="userinfo-area">
-            <img src="${contextPath}/image/tmpprofile2.jpg">
-            <h3>시공좋아</h3>
+            <img src="${contextPath}/image/profiles/${user.id}.jpg">
+            <h3>${user.nickname}</h3>
             <p>정보 1</p>
             <p>정보 2</p>
             <p>정보 3</p>
           </div>
-          <div class="post">
-          	<div class="title-area">
-              <h3 class="post-title">Sample blog post</h3>
-              <h3 class="post-simple-url"><a href='#'>@Facebook.com</a></h3>
-              <p class="post-url">URL <a href="#">https://www.facebook.com/choich00?fref=nf</a></p>
-            </div>            
-			<hr>
-			<div class="url-text-area">
-			  <img class="tumbnail" src="${contextPath}/image/library.jpg">
-
-              <p>
-              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </p>
-              <div class="clear-float"></div>
-            </div>
-            <hr>
-            <div class="user-text-area">
-              <p>
-              Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
-
-Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </p>
-            </div>
-            <div class="tag-area">
-              <p class="tags">#집가고싶어 #asdf #워쓰한궈런 #인디_게임_위크엔드 #후성아_고생이_많다 #더_써야_하는데 #프론트엔드_너무_어려워</p>
-            </div>
-          </div><!-- /.blog-post -->
-
-          <div class="post">
-          	<div class="title-area">
-              <h3 class="post-title">Sample blog post</h3>
-              <h3 class="post-simple-url"><a href='#'>@Facebook.com</a></h3>
-              <p class="post-url">URL <a href="#">https://www.facebook.com/choich00?fref=nf</a></p>
-            </div>            
-			<hr>
-			<div class="url-text-area">
-			  <img class="tumbnail" src="${contextPath}/image/wooden.jpg">
-
-              <p>
-              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </p>
-              <div class="clear-float"></div>
-            </div>
-            <hr>
-            <div class="user-text-area">
-              <p>
-              Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
-
-Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </p>
-            </div>
-            <div class="tag-area">
-              <p class="tags">#집가고싶어 #asdf #워쓰한궈런 #인디_게임_위크엔드 #후성아_고생이_많다 #더_써야_하는데 #프론트엔드_너무_어려워 #태그_하나_더</p>
-            </div>
-          </div>
-
-          <div class="post">
-          	<div class="title-area">
-              <h3 class="post-title">Sample blog post</h3>
-              <h3 class="post-simple-url"><a href='#'>@Facebook.com</a></h3>
-              <p class="post-url">URL <a href="#">https://www.facebook.com/choich00?fref=nf</a></p>
-            </div>            
-			<hr>
-			<div class="url-text-area">
-			  <img class="tumbnail" src="${contextPath}/image/whiteboard.jpg">
-
-              <p>
-              Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </p>
-              <div class="clear-float"></div>
-            </div>
-            <hr>
-            <div class="user-text-area">
-              <p>
-              Etiam porta sem malesuada magna mollis euismod. Cras mattis consectetur purus sit amet fermentum. Aenean lacinia bibendum nulla sed consectetur.
-
-Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Duis mollis, est non commodo luctus, nisi erat porttitor ligula, eget lacinia odio sem nec elit. Morbi leo risus, porta ac consectetur ac, vestibulum at eros.
-              </p>
-            </div>
-            <div class="tag-area">
-              <p class="tags">#집가고싶어 #asdf #워쓰한궈런 #인디_게임_위크엔드 #후성아_고생이_많다 #더_써야_하는데 #프론트엔드_너무_어려워 #태그_하나_더 #대기대기김대기</p>
-            </div>
-          </div>
           
-          <nav class="blog-pagination">
-            <a class="btn btn-outline-primary" href="#">Older</a>
-            <a class="btn btn-outline-secondary disabled" href="#">Newer</a>
-          </nav>
+          <h2 class="white">You are following: </h2>
+          <c:forEach items="${follows}" var="follow">
+	        <div class="user row">
+	          <img class="small-profile" src="${contextPath}/image/profiles/${follow.id.replace('@', '')}.jpg">
+	          <div class="col"><h3 class="username">${follow.nickname}</h3></div>
+	          <button class="btn btn-danger" id="unfollow" user="${follow.id}">Unfollow</button>
+	        </div>
+          </c:forEach>
         </div>
       </div>
     </main>
