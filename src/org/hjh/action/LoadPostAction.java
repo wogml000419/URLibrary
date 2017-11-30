@@ -38,6 +38,7 @@ public class LoadPostAction implements IAction
 			String isTimeline = request.getParameter("isTimeline");
 			String userToSearch = request.getParameter("userToSearch");
 			String searchJson = request.getParameter("search");		
+			int postNum = Integer.parseInt(request.getParameter("postNum"));
 			//isTimeline만 true이면 사용자의 타임라인
 			//userToSearch에 값이 있다면 유저의 글에서 검색한 결과 (혹은 타임라인)
 			//isTimeline보단 search가 우선도 높음
@@ -45,21 +46,36 @@ public class LoadPostAction implements IAction
 			System.out.println(userToSearch);
 			System.out.println(searchJson);		
 			
-			PostVO post = PostService.getPost(3);
-			UserVO user = UserService.searchUser(post.getUserEmail());
-			response.setContentType("application/json;charset=utf-8");
-			if(post != null)
+			if("true".equals(isTimeline))
 			{
-				PrintWriter out = response.getWriter();
-				JsonObject obj = new JsonObject();
-				obj.add("post", post.toJson());
-				obj.add("user", user.toJson());
-				out.write(obj.toString());
+				UserVO requestedUser = (UserVO)request.getSession().getAttribute("user");
+				if(requestedUser == null)
+					throw new Exception("로그인 해 주세요.");
+				int[] postIds = PostService.getTimelinePostIds(requestedUser.getId(), postNum, 1);
+				if(postIds[0] == 0)
+				{
+					throw new Exception("더이상 불러올 포스토가 없습니다.");
+				}
+				PostVO post = PostService.getPost(postIds[0]);
+				UserVO user = UserService.searchUser(post.getUserEmail());
+				response.setContentType("application/json;charset=utf-8");
+				if(post != null)
+				{
+					PrintWriter out = response.getWriter();
+					JsonObject obj = new JsonObject();
+					obj.add("post", post.toJson());
+					obj.add("user", user.toJson());
+					out.write(obj.toString());
+				}
 			}
 		}
 		catch(Exception e)
 		{
-			request.setAttribute("msg", e.getMessage());
+			response.setContentType("application/json;charset=utf-8");
+			PrintWriter out = response.getWriter();
+			JsonObject obj = new JsonObject();
+			obj.addProperty("msg", e.getMessage());
+			out.write(obj.toString());
 			e.printStackTrace();
 		}
 	}

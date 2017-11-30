@@ -32,7 +32,7 @@ public class PostService extends AbstractService
 			PostDao dao = new PostDao(conn);
 			PostVO result = dao.getPostById(postID);
  			if(result == null)
-				throw new Exception("존재하지 않는 글입니다.");
+				throw new Exception(postID + "는 존재하지 않는 글입니다.");
  			TagDao tdao = new TagDao(conn);
  			result.setTags(tdao.getTagOfPost(result.getPostID()));
 			return result;
@@ -51,6 +51,21 @@ public class PostService extends AbstractService
 			conn = getConnection();
 			PostDao dao = new PostDao(conn);
 			return dao.getLastPostId();
+		}
+		finally
+		{
+			if(conn != null) conn.close();
+		}
+	}
+	
+	public static int[] getTimelinePostIds(String requestedUser, int start, int cnt) throws Exception
+	{
+		Connection conn = null;
+		try
+		{
+			conn = getConnection();
+			PostDao dao = new PostDao(conn);
+			return dao.getTimelinePostIds(requestedUser, start, cnt);
 		}
 		finally
 		{

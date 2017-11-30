@@ -1,33 +1,44 @@
 function load_more_post() {
 	var post_num = $('.post').toArray().length
-	console.log(post_num)
-	
-	$.post("/WebClass/loadpost.do", 
-		{
-		'search': 'json here?', 
-        'isTimeline': true,
-        'userToSearch': 'test@naver.com'
-		},
-		function(data) {
-		var urlinfo = get_url_info(data, 
-			function(data, urlinfo) {
-			console.log('fuck: ' + urlinfo)
-		    $('#posts').loadTemplate($('#post-template'),
-			    {
-			    profile_src: '/image/profiles/' + data.user.id + ".jpg",
-			    nickname: data.user.nickname,
-				title: data.post.title,
-				url: data.post.url,
-				surl: data.post.surl,
-				url_title: urlinfo.title,
-				url_thumbnail: urlinfo.thumbnail,
-				url_text: urlinfo.description,
-				user_text: data.post.userText,
-				tags: data.post.tags
-				}, 
-				{ append: true })
-			})
+	for(var i = 0; i<4; i++)
+	{
+		console.log(post_num + i)
+		$.post("/WebClass/loadpost.do", 
+			{
+			'search': 'json here?', 
+	        'isTimeline': true,
+	        'userToSearch': 'test@naver.com',
+	        'postNum' : post_num + i
+			},
+			function(data) {
+			console.log('data: ' + data)
+			if(data.msg == null || data.msg == undefined) {				
+				get_url_info(data, 
+					function(data, urlinfo) {
+				    $('#posts').loadTemplate($('#post-template'),
+					    {
+					    profile_src: '/image/profiles/' + data.user.id + ".jpg",
+					    nickname: data.user.nickname,
+						title: data.post.title,
+						url: data.post.url,
+						surl: data.post.surl,
+						url_title: urlinfo.title,
+						url_thumbnail: urlinfo.thumbnail,
+						url_text: urlinfo.description,
+						user_text: data.post.userText,
+						tags: data.post.tags
+						}, 
+						{ append: true }
+					)
+				})
+			}
+			else {
+				$('#error-title').text('오류')
+				$('#error-msg').text(data.msg)
+				$('#error-modal').modal()
+			}
 		})
+	}
 }
 
 function get_url_info(postdata, callback) {

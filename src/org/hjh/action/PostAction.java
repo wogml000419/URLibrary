@@ -59,7 +59,7 @@ public class PostAction implements IAction
 	{
 		if("no one".equals(shareWith))
 			return 0;
-		else if("friends".equals(shareWith))
+		else if("followers".equals(shareWith))
 			return 1;
 		else 
 			return 2;
