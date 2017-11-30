@@ -96,14 +96,14 @@ public class PostAction implements IAction
 		    
 		    request.setAttribute("title", "글 등록 완료");
 		    request.setAttribute("msg", "정상적으로 글이 등록되었습니다.");
-		    request.getRequestDispatcher("/jsp/timeline.jsp").forward(request, response);
+		    request.getRequestDispatcher("/timeline.do?isTimeline=true&showerror=false").forward(request, response);
 		}
 		catch(Exception e) 
 		{
 			e.printStackTrace();
 			request.setAttribute("title", "글 등록 실패");
 			request.setAttribute("msg", e.getMessage());
-			request.getRequestDispatcher("/jsp/timeline.jsp").forward(request, response);
+			request.getRequestDispatcher("/timeline.do?isTimeline=true&showerror=false").forward(request, response);
 		}
 	}
 

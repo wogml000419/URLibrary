@@ -110,7 +110,7 @@ public class PostVO {
 	{
 		return "PostVO [postID=" + postID + ", userEmail=" + userEmail + ", url=" + url + ", surl=" + surl
 				+ ", title=" + title + ", userText="
-				+ userText + ", tags=" + tags + "]";
+				+ userText + ", shareWith=" + shareWith + ", tags=" + tags + "]";
 	}
 	
 	public JsonObject toJson()

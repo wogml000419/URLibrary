@@ -21,7 +21,7 @@
           <ul class="navbar-nav mr-auto">
             <c:if test="${!empty user}"> 
               <li class="nav-item">
-                <a class="nav-link" href="#">Timeline</a>
+                <a class="nav-link" href="${contextPath}/timeline.do?isTimeline=true&showerror=false">Timeline</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">Other's URLs</a>
@@ -29,8 +29,8 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown04" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">${user.nickname}</a>
                 <div class="dropdown-menu" aria-labelledby="dropdown04">
-                  <a class="dropdown-item" href="#">My URLs</a>
-                  <a class="dropdown-item" href="#">My Friends</a>
+                  <a class="dropdown-item" href="/timeline.do?userToSearch=${user.id}&showerror=false">My URLs</a>
+                  <a class="dropdown-item" href="#">My Follows</a>
                   <a class="dropdown-item" href="${contextPath}/logout.do">Logout</a>
                 </div>
               </li>

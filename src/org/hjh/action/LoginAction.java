@@ -55,7 +55,7 @@ public class LoginAction implements IAction {
 				//세션에 사용자 정보 생성
 				HttpSession session = request.getSession();
 				session.setAttribute("user", result);
-				RequestDispatcher rd = request.getRequestDispatcher("/jsp/timeline.jsp");
+				RequestDispatcher rd = request.getRequestDispatcher("/timeline.do?isTimeline=true&showerror=false");
 				rd.forward(request, response);
 			}
 			else

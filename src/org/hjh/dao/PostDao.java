@@ -124,6 +124,45 @@ public class PostDao
 		}
 	}
 	
+	public int[] getOnesPostIds(String userEmail, int start, int cnt, int shareWith) throws Exception
+	{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		String sql = "SELECT POSTID FROM POST WHERE USEREMAIL=? AND SHAREWITH>=? ORDER BY POSTID DESC LIMIT ?, ?";
+		
+		try
+		{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, userEmail);
+			pstmt.setInt(2, shareWith);
+			pstmt.setInt(3, start);
+			pstmt.setInt(4, cnt);
+			
+			rs = pstmt.executeQuery();
+			
+			int i=0;
+			int[] result = new int[cnt];
+			while(rs.next())
+			{
+				result[i] = rs.getInt(1);
+				i++;
+			}
+			
+			return result;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			throw new Exception("포스트를 조회하는 중 오류가 발생하였습니다.");
+		}
+		finally
+		{
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+		}
+	}
+	
 	public int getLastPostId() throws Exception 
 	{
 		PreparedStatement pstmt = null;

@@ -9,8 +9,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.hjh.vo.PostVO;
-
 /**
  * <pre>
  * org.hjh.dao
@@ -53,6 +51,35 @@ public class FollowsDao
 			}
 			System.out.println(result);
 			return result;
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+			throw new Exception("팔로우 목록을 조회하는 중 오류가 발생하였습니다.");
+		}
+		finally
+		{
+			if(rs != null) rs.close();
+			if(pstmt != null) pstmt.close();
+		}
+	}
+	
+	public boolean isFollowing(String follower, String user) throws Exception
+	{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+				
+		String sql = "SELECT * FROM FOLLOWS WHERE USER=? AND FOLLOWS=?";
+		
+		try
+		{
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, follower);
+			pstmt.setString(2, user);
+			
+			rs = pstmt.executeQuery();
+			
+			return rs.next();
 		}
 		catch(Exception e)
 		{

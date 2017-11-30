@@ -5,6 +5,7 @@ package org.hjh.service;
 
 import java.sql.Connection;
 
+import org.hjh.dao.FollowsDao;
 import org.hjh.dao.PostDao;
 import org.hjh.dao.TagDao;
 import org.hjh.vo.PostVO;
@@ -66,6 +67,37 @@ public class PostService extends AbstractService
 			conn = getConnection();
 			PostDao dao = new PostDao(conn);
 			return dao.getTimelinePostIds(requestedUser, start, cnt);
+		}
+		finally
+		{
+			if(conn != null) conn.close();
+		}
+	}
+	
+	public static int[] getOnesPostIds(String requestedUser, String userToSearch, int start, int cnt) throws Exception
+	{
+		Connection conn = null;
+		try
+		{
+			conn = getConnection();
+			PostDao dao = new PostDao(conn);
+			FollowsDao fdao = new FollowsDao(conn);
+			
+			int shareWith = 2;
+			if(userToSearch.equals(requestedUser))
+			{
+				shareWith = 0;
+			}
+			else if(fdao.isFollowing(requestedUser, userToSearch))
+			{
+				shareWith = 1;
+			}
+			else
+			{
+				shareWith = 2;
+			}
+				
+			return dao.getOnesPostIds(userToSearch, start, cnt, shareWith);
 		}
 		finally
 		{

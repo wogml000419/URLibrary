@@ -1,14 +1,15 @@
-function load_more_post() {
+function load_more_post(search, isTimeline, userToSearch, showError) {
 	var post_num = $('.post').toArray().length
 	for(var i = 0; i<4; i++)
 	{
 		console.log(post_num + i)
 		$.post("/WebClass/loadpost.do", 
 			{
-			'search': 'json here?', 
-	        'isTimeline': true,
-	        'userToSearch': 'test@naver.com',
-	        'postNum' : post_num + i
+			'search': search, 
+	        'isTimeline': isTimeline,
+	        'userToSearch': userToSearch,
+	        'postNum': post_num + i,
+	        'showerror': showError
 			},
 			function(data) {
 			console.log('data: ' + data)
@@ -17,6 +18,7 @@ function load_more_post() {
 					function(data, urlinfo) {
 				    $('#posts').loadTemplate($('#post-template'),
 					    {
+				    	profile_href: 'timeline.do?userToSearch=' + data.user.id + '&showerror=false',
 					    profile_src: '/image/profiles/' + data.user.id + ".jpg",
 					    nickname: data.user.nickname,
 						title: data.post.title,
